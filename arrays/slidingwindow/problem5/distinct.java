@@ -1,5 +1,7 @@
 //problem 5 - Count distinct elements in every window
 // topics - fixed-size sliding window, hashmap
+// available on gfg - Count distinct elements in every window
+
 
 
 import java.util.ArrayList;

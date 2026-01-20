@@ -2,28 +2,28 @@
 // topic - kadanes algortihm
 
 
-static List<Integer> maxSumSubarray(int[] a) {
-       int currSum=a[0];
-      int maxSum=a[0];
+ static List<Integer> maxSumSubarray(int[] a) {
+        
+        
+      int currSum=0;
+      int maxSum=Integer.MIN_VALUE;
+      int i=0,j=0;
       int tempStart=0;
-      int i=0;
-      int j=0;
-      for(int k=1;k<a.length;k++){
-        if(a[k]>currSum+a[k]){
-          currSum=a[k];
-          tempStart=k;
-        }else{
-          currSum+=a[k];
+        for (int k = 0; k < a.length; k++) {
+            currSum+=a[k];
+          if(currSum>maxSum){
+          maxSum=currSum;
+            i=tempStart;
+            j=k;
+          }
+          if(currSum<0){
+          currSum=0;
+            tempStart=k+1;
+          }
         }
-        if(currSum>maxSum){
-         maxSum=currSum;
-          i=tempStart;
-          j=k;
-        }
-      }
       
         List<Integer> res = new ArrayList<>();
-        for (int l = i; l <= j; l++)
-            res.add(a[l]);
+        for (int k = i; k <= j; k++)
+            res.add(a[k]);
         return res;
-}
+ }

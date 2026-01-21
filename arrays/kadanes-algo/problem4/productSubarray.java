@@ -2,23 +2,19 @@
 // topic - kadanes algortihm
 
 class Solution {
-    public int maxProduct(int[] nums) {
-          int maxProd = nums[0];
-        int minProd = nums[0];
-        int result = nums[0];
+    public int maxProduct(int[] a) {
+     int maxProd=Integer.MIN_VALUE;
+     int currMax=1,currMin=1;
+     int i=0;
+     while(i<a.length){
+        int curr=a[i];
+        int temp=currMax;
+        currMax=Math.max(curr,Math.max(curr*currMax,curr*currMin));
+        currMin=Math.min(curr,Math.min(curr*temp,curr*currMin));
 
-        for (int i = 1; i < nums.length; i++) {
-            int curr = nums[i];
-
-            int tempMax = Math.max(curr, Math.max(curr * maxProd, curr * minProd));
-            int tempMin = Math.min(curr, Math.min(curr * maxProd, curr * minProd));
-
-            maxProd = tempMax;
-            minProd = tempMin;
-
-            result = Math.max(result, maxProd);
-        }
-        return result;
+        maxProd=Math.max(maxProd,currMax);
+        i++;
+     }
+     return maxProd;
     }
 }
-

@@ -1,6 +1,6 @@
 // leetcode 63. Unique Paths II
 
-// Time Complexity: 𝑂(2𝑚+𝑛)
+// Time Complexity: 𝑂(2^(𝑚+𝑛))
 
 // Space Complexity: 𝑂(𝑚+𝑛) (due to recursion stack depth)
 

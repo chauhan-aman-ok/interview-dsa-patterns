@@ -9,6 +9,8 @@
 
 class Solution {
   public:
+
+
     int tabulation(vector<int> &val,vector<int> &wt,int bag,vector<vector<int>> &dp){
         for(int i=0;i<val.size();i++){
             for(int j=1;j<=bag;j++){
@@ -31,3 +33,24 @@ class Solution {
         return tabulation(val,wt,W,dp);
     }
 };
+
+// better function - easy to understand and better as compate to above
+int tabulation(vector<int> &val,vector<int> &wt,int bag,vector<vector<int>> &dp){
+        for(int i=0;i<=bag;i++){
+         if(wt[0]<=i) dp[0][i]=val[0];   
+        }
+        for(int i=1;i<val.size();i++){
+            for(int j=1;j<=bag;j++){
+               
+                    if(wt[i]<=j){
+                        dp[i][j]=max(val[i]+dp[i-1][j-wt[i]],dp[i-1][j]);
+                    }else{
+                        dp[i][j]=dp[i-1][j];
+                    }
+                
+            }
+        }
+        return dp[wt.size()-1][bag];
+}
+
+

@@ -1,0 +1,26 @@
+// Problem: LC 958 - Check Completeness of a Binary Tree
+
+// Time Complexity: O(n)
+
+// Space Complexity: O(n)
+
+class Solution {
+public:
+    bool isCompleteTree(TreeNode* root) {
+        queue<TreeNode*> q;
+        q.push(root);
+        bool past=false;
+        while(!q.empty()){
+             TreeNode *node=q.front();
+             q.pop();
+             if(!node){
+                past=true;
+             }else{
+                if(past) return false;
+                q.push(node->left);
+                q.push(node->right);
+             }
+        }
+        return true;
+    }
+};
